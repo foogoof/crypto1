@@ -1,0 +1,39 @@
+;; gorilla-repl.fileformat = 1
+
+;; **
+;;; # Notes for Coursera Cryptography I by Dan Boneh
+;;; 
+;;; ## Course Overview
+;;; 
+;;; ** ONLY ** use peer-reviewed algorithms!
+;;; ** DON'T ** invent **and** use your own designs :-)	
+;; **
+
+;; **
+;;; Symmetric encryption
+;;; --------------------
+;;; 
+;;; Given:
+;;; * `k`: secret key
+;;; * `m`: plaintext message
+;;; * `c`: ciphertext message
+;;; * `E`: encryption algorithm
+;;; * `D`: decryption algorithm
+;;; 
+;;; Encrypt: `c = E(k, m)`  
+;;; Decrypt: `m = D(k, c)`  
+;; **
+
+;; **
+;;; Use cases
+;;; ---------
+;;; 
+;;; ### Single use key
+;;; * key is used to encrypt one message
+;;; * encrypted email: new key for each message
+;;; 
+;;; ### Multi use key
+;;; * key is used to encrypt multiple messages
+;;; * encrypted files: same key used for multiple messages
+;;; * more machinery required
+;; **
