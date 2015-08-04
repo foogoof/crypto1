@@ -1,0 +1,62 @@
+;; gorilla-repl.fileformat = 1
+
+;; **
+;;; # Notes for Coursera Cryptography I by Dan Boneh
+;;; 
+;;; ## What is cryptography?
+;;; 
+;; **
+
+;; **
+;;; Two main goals of cryptography are:
+;;; 
+;;;   * secure key establishment
+;;;   * secure communication
+;; **
+
+;; **
+;;; Some uses of cryptography include:
+;;; 
+;;;   * digital signatures
+;;;   * anonymous communication (mix net)
+;;;   * anonymous digital cash
+;;;   * elections
+;;;   * private auctions like the [Vickery auction](https://en.wikipedia.org/wiki/Vickrey_auction)
+;;;   * secure multiparty communication
+;; **
+
+;; **
+;;; ### BAD: trusted authority
+;;; ### BETTER: peer to peer verification
+;;; 
+;;; Theorem: anything that can be done with a trusted authority can also be done without.
+;; **
+
+;; **
+;;; ### Crypto magic
+;;; 
+;;; * privately outsourcing computation
+;;;   - receiving encrypted results based on encrypted criteria... search engine has no knowledge of criteria
+;;; * zero knowledge (proof of knowledge)
+;;; 
+;;; Given two large primes `p` and `q` and their product `N`:
+;;; 
+;;; * Alice knows `p` and `q` and `N`
+;;; * Bob knows `N`
+;;; * Alice can prove to Bob she knows `p` and `q` without disclosing them
+;;; 
+;; **
+
+;; **
+;;; ### Cryptography is a rigorous science
+;;; 
+;;; This course takes these steps:
+;;; 
+;;; 1. Precisely specify the threat model
+;;; 2. Propose a construction
+;;; 3. Prove that breaking the construction under the threat model will solve an underlying hard problem
+;; **
+
+;; **
+;;; 
+;; **
