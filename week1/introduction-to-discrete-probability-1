@@ -1,0 +1,81 @@
+;; gorilla-repl.fileformat = 1
+
+;; **
+;;; # Notes for Coursera Cryptography I by Dan Boneh
+;;; 
+;;; ## Introduction to discrete probability (part 1)
+;; **
+
+;; **
+;;; Discrete probabilty is a key part of a rigorous mathematical approach to cryptography.
+;;; 
+;;; Let @@U@@ be a finite set, e.g. @@ U = \lbrace 0,1 \rbrace^n @@
+;;; 
+;;; When @@n = 2@@: @@ \qquad \lbrace 0, 1 \rbrace^2 = \lbrace 00, 01, 10, 11 \rbrace @@
+;;; 
+;;; A **probability distribution** @@P@@ over @@U@@ is a function @@P:U \to [0, 1]@@ such that $$ \sum_{x \in U} P(x) = 1$$.
+;; **
+
+;; **
+;;; ### Examples
+;; **
+
+;; **
+;;; ** Uniform distribution **
+;;; 
+;;; Every element is assigned an equal probability, where @@|U|@@ is the size of the universe.
+;;; 
+;;; $$ \forall x \in U: \qquad P(x) = \frac {1}{|U|} $$
+;;; 
+;;; 
+;;; 
+;; **
+
+;; **
+;;; ** Point distribution at @@x_0@@ **
+;;; 
+;;; $$ P(x_0) = 1, \qquad \forall x \neq x_0: \quad P(x) = 0 $$
+;;; 
+;; **
+
+;; **
+;;; ** Distribution vector **
+;;; 
+;;; Where @@U@@ is the set of 3 bits, all the probabilities can be captured in a vector containing @@2^3@@ elements.
+;;; 
+;;; $$ ( P(000), P(001), P(010), \ldots, P(111) ) $$
+;;; 
+;; **
+
+;; **
+;;; ## Events
+;;; 
+;;; For a set @@ A \subseteq U: @@
+;;; 
+;;; $$ \quad Pr[A] = \sum_{x \in A}P(x) \quad \in [0,1] $$
+;;; 
+;;; **Note**: @@Pr[U] = 1, \quad Pr[A] \in [0, 1] @@
+;;; 
+;;; The subset @@A@@ of the universe @@U@@ is called an **event**. The probability of that set @@A@@ is called probability of that event.
+;;; 
+;;; 
+;; **
+
+;; **
+;;; ### Example
+;;; 
+;;; @@ U = \lbrace 0, 1 \rbrace ^8 @@
+;;; 
+;;; @@ A = \lbrace x \in U @@ such that @@ lsb_2(x) = 11 \rbrace \quad \subseteq U \quad @@ for the uniform distribution on @@ \lbrace 0, 1 \rbrace^8 @@
+;; **
+
+;; @@
+(/ 64 256)
+;; @@
+;; =>
+;;; {"type":"html","content":"<span class='clj-ratio'>1/4</span>","value":"1/4"}
+;; <=
+
+;; @@
+
+;; @@
