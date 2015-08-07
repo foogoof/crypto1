@@ -52,12 +52,11 @@
 ;;; 
 ;;; For a set @@ A \subseteq U: @@
 ;;; 
-;;; $$ \quad Pr[A] = \sum_{x \in A}P(x) \quad \in [0,1] $$
+;;; $$ \quad \Pr[A] = \sum_{x \in A}P(x) \quad \in [0,1] $$
 ;;; 
-;;; **Note**: @@Pr[U] = 1, \quad Pr[A] \in [0, 1] @@
+;;; **Note**: @@\Pr[U] = 1, \quad \Pr[A] \in [0, 1] @@
 ;;; 
 ;;; The subset @@A@@ of the universe @@U@@ is called an **event**. The probability of that set @@A@@ is called probability of that event.
-;;; 
 ;;; 
 ;; **
 
@@ -75,6 +74,115 @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-ratio'>1/4</span>","value":"1/4"}
 ;; <=
+
+;; **
+;;; ## The union bound
+;; **
+
+;; **
+;;; For events @@A_1@@ and @@A_2@@: $$ \Pr[A_1 \cup A_2] \quad \leq \quad \Pr[A_1] + \Pr[A_2] $$
+;; **
+
+;; **
+;;; If the events are disjoint -- the intersection is empty
+;;; 
+;;; If @@A_1 \cap A_2 = \emptyset \rightarrow \quad \Pr[A_1 \cup A_2] \quad = \quad \Pr[A_1] + \Pr[A_2] @@
+;; **
+
+;; **
+;;; Example:
+;;; $$ A_1 = \lbrace \forall x \in \lbrace 0, 1 \rbrace ^n s.t. lsb_2(x) = 11 \rbrace $$
+;;; $$ A_2 = \lbrace \forall x \in \lbrace 0, 1 \rbrace ^n s.t. msb_2(x) = 11 \rbrace $$
+;;; $$ \Pr[ lsb_2(x) = 11 \quad or \quad msb_2(x) = 11] = \Pr[A_1 \cup A_2] \leq \frac{1}{4} + \frac{1}{4} = \frac{1}{2} $$
+;; **
+
+;; **
+;;; ## Random variables
+;; **
+
+;; **
+;;; A random variable @@X@@ is a function @@X:U \to V@@
+;;; 
+;;; Example: For the universe @@U@@ of @@n@@ bit binary strings, the random variable @@X@@ produces one bit -- either 0 or 1.
+;;; 
+;;; $$ X: \lbrace 0, 1 \rbrace^n \to \lbrace 0, 1 \rbrace $$ 
+;;; 
+;;; Let @@y@@ be a particular @@n@@ bit binary string. @@lsb@@ is a function that returns the least significant bit of its input, a value @@ \in \lbrace 0, 1 \rbrace @@.
+;;; 
+;;; $$ X(y) = lsb(y) \in \lbrace 0, 1 \rbrace $$
+;; **
+
+;; **
+;;; #### Example
+;;; 
+;;; For the uniform distribution on @@U@@:
+;;; 
+;;; $$ \Pr[X=0] = \frac{1}{2}, \quad \Pr[X=1] = \frac{1}{2} $$ 
+;; **
+
+;; **
+;;; More generally, random variable @@X@@ introduces a distribution on @@V@@
+;;; 
+;;; $$ \Pr[X=v] := \Pr[X^{-1}(v)] $$
+;;; 
+;; **
+
+;; **
+;;; ??? holy crap this was a whole bunch at once. Completely lost.
+;; **
+
+;; **
+;;; #### The uniform random variable
+;;; 
+;;; Let @@U@@ be some set, e.g. @@ U = \lbrace 0, 1 \rbrace^n @@
+;;; 
+;;; We write @@r \xleftarrow{\text {R}} U @@ to denote a **uniform random variable** over @@U@@.
+;;; 
+;;; @@r@@ is the identity function: @@ \quad r(x) = x \quad \forall x \in U @@
+;;; 
+;;; $$ \forall a \in U: \quad \Pr[r = a] = \frac{1}{|U|} $$
+;; **
+
+;; **
+;;; ##### question
+;;; 
+;;; Let @@r@@ be a uniform random variable on @@ \lbrace 0, 1 \rbrace @@.
+;;; 
+;;; Define the random variable @@ X = r_1 + r_2 @@, summing the first two bits as integers.
+;;; 
+;;; Then @@ \Pr[X=2] = ? @@
+;;; 
+;;; 
+;; **
+
+;; **
+;;; ## Randomized algorithm
+;;; 
+;; **
+
+;; **
+;;; A deterministic algorithm:
+;;; 
+;;; $$ y \gets A(m) $$
+;; **
+
+;; **
+;;; A randomized algorithm:
+;; **
+
+;; **
+;;; $$ y \gets A(m ; r) \quad where \quad r \xleftarrow{\text{R}} \lbrace 0, 1 \rbrace ^n $$
+;; **
+
+;; **
+;;; Its output is a random variable: $$ y \xleftarrow {\text{R}} A(m) $$
+;; **
+
+;; **
+;;; The algorithm defines a distribution on all possible outputs. Example:
+;;; 
+;;; $$ A(m ; k) = E(k, m) \quad , \quad y \xleftarrow{\text{R}} A(m) $$
+;; **
 
 ;; @@
 
