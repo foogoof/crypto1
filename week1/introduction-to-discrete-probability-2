@@ -1,0 +1,53 @@
+;; gorilla-repl.fileformat = 1
+
+;; **
+;;; # Notes for Coursera Cryptography I by Dan Boneh
+;;; 
+;;; ## Introduction to discrete probability (part 2)
+;; **
+
+;; **
+;;; ### Independence
+;;; 
+;;; Events @@A@@ and @@B@@ are **independent** if $$ \Pr[A \, and \, B] = Pr[A] \times Pr[B] $$
+;;; 
+;;; This means that the probability of both @@A@@ and @@B@@ happening is equal to the probability of event A times the probability of event B.
+;; **
+
+;; **
+;;; #### Independence of random variables
+;;; 
+;;; Random variables @@X, Y@@ taking values in @@V@@ are **independent** if
+;;; $$ \forall a, b \in V: \quad Pr[X=a\,and\,Y=b] = Pr[X=a] \times Pr[X=b]$$
+;; **
+
+;; **
+;;; ##### Example
+;;; 
+;;; $$ U = \lbrace 0, 1 \rbrace^2 = \lbrace 00, 01, 10, 11 \rbrace \quad and \quad r \xleftarrow{\text{R}} U $$
+;; **
+
+;; **
+;;; Define random variables @@X@@ and @@Y@@ as : @@ X = lsb(r)\,, Y = msb(r) @@. Nothing about X gives any information about Y.
+;;; 
+;;; $$\Pr[X=0\, and\, Y=0] = \Pr[r=00] = \frac{1}{4} = \Pr[X=0] \times \Pr[Y=0] $$
+;; **
+
+;; **
+;;; ### XOR
+;;; 
+;;; XOR is addition modulo 2 represented as @@ \oplus @@.
+;;; 
+;;; ** Theorem **
+;;; 
+;;; @@Y@@ is a random variable over @@\lbrace 0, 1 \rbrace^n @@
+;;; 
+;;; @@X@@ is an independent uniform variable on @@\lbrace 0, 1 \rbrace^n @@
+;;; 
+;;; 
+;;; 
+;; **
+
+;; @@
+
+;; @@
