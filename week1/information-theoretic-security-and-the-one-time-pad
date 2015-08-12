@@ -1,0 +1,115 @@
+;; gorilla-repl.fileformat = 1
+
+;; **
+;;; # Notes for Coursera Cryptography I by Dan Boneh
+;;; 
+;;; ## Information theoretic security and the one time pad
+;; **
+
+;; **
+;;; ### Symmetric Ciphers
+;;; 
+;;; A **cipher** is defined over a triple:
+;;; 
+;;; * All possible keys, sometimes called the keyspace. Denoted as @@ \mathcal{K} @@
+;;; * All possible messages. Denoted as @@ \mathcal{M} @@
+;;; * All possible ciphertexts. Denoted as @@ \mathcal{C} @@
+;;; 
+;;; The **cipher** itself is defined as a pair of "efficient" algorithms @@ (E,\, D) @@ where
+;;; 
+;;; $$ \mathcal{E}: \mathcal{K} \times \mathcal{M} \to \mathcal{C},\quad \mathcal{D}: \mathcal{K} \times \mathcal{C} \to \mathcal{M} $$
+;;; 
+;;; Such that the consistency equation holds:
+;;; 
+;;; $$ \forall\,\, \mathcal{m} \in \mathcal{M},\, \mathcal{k} \in \mathcal{K}: \quad D(\mathcal{k}, E(\mathcal{k},\, \mathcal{m})) = \mathcal{m} $$
+;; **
+
+;; **
+;;; Note that "efficient" means different things from different perspectives. 
+;;; 
+;;; If you are more inclined towards theory, then @@E@@ and @@D@@ have to run in [polynomial time](https://en.wikipedia.org/wiki/Time_complexity#Polynomial_time) in the size of their inputs.
+;;; 
+;;; If you are more practically inclined, efficient means runs in a concrete time constraints. For example, @@E@@ might be required to encrypt a gigabyte within a minute. 
+;; **
+
+;; **
+;;; Note:
+;;; 
+;;; * Algorithm @@E@@ is often randomized
+;;; * Algoritm @@D@@ is always deterministic
+;; **
+
+;; **
+;;; ### The [one-time pad](https://en.wikipedia.org/wiki/One-time_pad) (Vernam 1917)
+;;; 
+;;; This is the first example of a secure cipher.
+;;; 
+;;; $$ \mathcal{M} = \mathcal{C} = \mathcal{K} = \lbrace 0, 1 \rbrace^n $$
+;;; 
+;;; @@ \mathcal{k} @@ is a random sequence of bits as long as the message.
+;;; 
+;;; @@\oplus@@ is XOR -- addition modulo 2.
+;; **
+
+;; **
+;;; #### How the cipher works
+;; **
+
+;; **
+;;; $$ c \gets k \oplus m $$
+;;; $$ m \gets k \oplus c $$
+;; **
+
+;; @@
+(require '[clojure.pprint :as pp])
+
+(let [m 2r00110111
+      k 2r01011001]
+	(print (pp/cl-format nil "m: ~2,8,'0r\nk: ~2,8,'0r\nc: ~2,8,'0r\n "
+                         m
+                         k
+                         (bit-xor m k))))
+
+;; @@
+;; ->
+;;; m: 00110111
+;;; k: 01011001
+;;; c: 01101110
+;;;  
+;; <-
+;; =>
+;;; {"type":"html","content":"<span class='clj-nil'>nil</span>","value":"nil"}
+;; <=
+
+;; **
+;;; Given a message @@m@@ and its one time password encryption @@c@@, can you compute the key @@k@@ from @@m@@ and @@c@@? 
+;; **
+
+;; **
+;;; $$ c = m \oplus k,\quad k = c \oplus m $$
+;;; 
+;; **
+
+;; @@
+(let [m 2r00110111
+      k 2r01011001
+      c (bit-xor m k)]
+	(print (pp/cl-format nil "m: ~2,8,'0r\nc: ~2,8,'0r\nk: ~2,8,'0r\n "
+                         m
+                         c
+                         (bit-xor m c)))
+	(= k (bit-xor m c)))
+;; @@
+;; ->
+;;; m: 00110111
+;;; c: 01101110
+;;; k: 01011001
+;;;  
+;; <-
+;; =>
+;;; {"type":"html","content":"<span class='clj-unkown'>true</span>","value":"true"}
+;; <=
+
+;; @@
+
+;; @@
