@@ -110,6 +110,35 @@
 ;;; {"type":"html","content":"<span class='clj-unkown'>true</span>","value":"true"}
 ;; <=
 
+;; **
+;;; The one time pad is very fast -- simply xoring. The key length is as long as the plaintext. When the key is as long as the message and both have to be sent securely… why not just send the message?
+;;; 
+;;; So why is the one time pad a good cipher? Why is it secure?
+;;; 
+;;; 
+;; **
+
+;; **
+;;; 
+;; **
+
+;; **
+;;; ### Information Theoretic Security ([Shannon 1949](https://en.wikipedia.org/wiki/Communication_Theory_of_Secrecy_Systems))
+;;; 
+;;; #### What makes a cipher secure?
+;;; 
+;;; Basic idea: the ciphertext should reveal no "info" about the plaintext.
+;;; 
+;;; **Definition: ** A cipher @@(E, D)@@ over @@\mathcal{(K, M, C})@@ has _perfect secrecy_ if the following condition holds:
+;;; 
+;;; $$ \forall m_0, m_1 \in \mathcal {M} \quad and \quad \forall c \in \mathcal {C} … $$
+;;; $$ \Pr[E(k, m_0) = c] = \Pr[E(k, m_1) = c] $$
+;;; 
+;;; … such that @@len(m_0) = len(m_1)@@.
+;;; 
+;;; 
+;; **
+
 ;; @@
 
 ;; @@
